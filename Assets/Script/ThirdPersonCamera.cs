@@ -19,9 +19,6 @@ public class ThirdPersonCamera : MonoBehaviour
         Vector3 angles = transform.eulerAngles;
         yaw = angles.y;
         pitch = angles.x;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void LateUpdate()
@@ -34,11 +31,16 @@ public class ThirdPersonCamera : MonoBehaviour
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         // 相机旋转
-        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
-        transform.rotation = rotation;
+        Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0);
+        transform.rotation = camRotation;
 
-        // 相机位置（关键公式）
+        // ⭐ 让玩家跟随相机 Y 轴旋转
+        Quaternion playerRotation = Quaternion.Euler(0, yaw, 0);
+        target.rotation = playerRotation;
+
+        // 相机位置
         Vector3 targetPos = target.position + Vector3.up * height;
-        transform.position = targetPos - rotation * Vector3.forward * distance;
+        transform.position = targetPos - camRotation * Vector3.forward * distance;
     }
+
 }

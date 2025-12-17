@@ -2,28 +2,43 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : UnitySingleton<UIController>
 {
-    [FormerlySerializedAs("setting")] public GameObject helper;
+    [Header("Panel")]
+    public GameObject helper;
+    public GameObject falsePanel;
+    public GameObject startPanel;
+    [Header("按钮")]
     public Button startButton;
     public Button helpButton;
     public Button helpBackButton;
     public Button endButton;
+    public Button replayBtn;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         startButton.onClick.AddListener(StartGame);
         // endButton.onClick.AddListener(EndGame);
         helpButton.onClick.AddListener(Helper);
         helpBackButton.onClick.AddListener(HelperBack);
+        replayBtn.onClick.AddListener(Replay);
+    }
+
+    private void Replay()
+    {
+        SceneManager.LoadScene("Scenes/DemoScene");
     }
 
     public void StartGame()
     {
-        gameObject.SetActive(false);
+        startPanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void Helper()
@@ -35,7 +50,13 @@ public class UIController : MonoBehaviour
     {
         helper.SetActive(false);
     }
-    
+
+    public void SetFalse()
+    {
+        falsePanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     public void EndGame()
     {
 #if UNITY_EDITOR
