@@ -11,6 +11,7 @@ public class UIController : UnitySingleton<UIController>
     [Header("Panel")]
     public GameObject helper;
     public GameObject falsePanel;
+    public GameObject winPanel;
     public GameObject startPanel;
     [Header("按钮")]
     public Button startButton;
@@ -18,6 +19,7 @@ public class UIController : UnitySingleton<UIController>
     public Button helpBackButton;
     public Button endButton;
     public Button replayBtn;
+    public Button replayBtn2;
 
     protected override void Awake()
     {
@@ -27,6 +29,7 @@ public class UIController : UnitySingleton<UIController>
         helpButton.onClick.AddListener(Helper);
         helpBackButton.onClick.AddListener(HelperBack);
         replayBtn.onClick.AddListener(Replay);
+        replayBtn2.onClick.AddListener(Replay);
     }
 
     private void Replay()
@@ -54,6 +57,12 @@ public class UIController : UnitySingleton<UIController>
     public void SetFalse()
     {
         falsePanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    public void SetWin()
+    {
+        winPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
