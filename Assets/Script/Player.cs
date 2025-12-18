@@ -128,10 +128,9 @@ public class Player : MonoBehaviour
     // =========================
     void UpdateAnimator()
     {
-        Vector3 horizontalVelocity = rb.velocity;
-        horizontalVelocity.y = 0;
+        bool isMoving = moveInput.magnitude > 0;
 
-        animator.SetFloat("Speed", horizontalVelocity.magnitude);
+        animator.SetBool("Move", isMoving);
         animator.SetBool("IsGrounded", isGrounded);
     }
 
@@ -142,5 +141,6 @@ public class Player : MonoBehaviour
     {
         isDead = true;
         rb.velocity = Vector3.zero;
+        AudioManager.Instance.Play(1);
     }
 }

@@ -10,6 +10,6 @@ public class WinTriggle : MonoBehaviour
         Player p = other.gameObject.GetComponent<Player>();
         if (!p) return;
         
-        // UIController.Instance.
+        UIController.Instance.SetWin();
     }
 }
