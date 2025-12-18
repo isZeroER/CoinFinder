@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
 
     // 组件
-    private Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
     private Animator animator;
 
     // 状态
