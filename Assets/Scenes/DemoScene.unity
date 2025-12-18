@@ -2158,6 +2158,7 @@ MonoBehaviour:
   endButton: {fileID: 0}
   replayBtn: {fileID: 1223354517}
   replayBtn2: {fileID: 786223064}
+  replayBtn3: {fileID: 131498469}
   closeHelperBtn: {fileID: 521195597}
   tipBackBtn: {fileID: 950415776}
 --- !u!1 &660494044

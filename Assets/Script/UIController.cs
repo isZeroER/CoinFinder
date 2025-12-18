@@ -23,6 +23,7 @@ public class UIController : UnitySingleton<UIController>
     public Button endButton;
     public Button replayBtn;
     public Button replayBtn2;
+    public Button replayBtn3;
     public Button closeHelperBtn;
     public Button tipBackBtn;
     
@@ -36,6 +37,7 @@ public class UIController : UnitySingleton<UIController>
         closeHelperBtn.onClick.AddListener(() => Helper(false));
         replayBtn.onClick.AddListener(Replay);
         replayBtn2.onClick.AddListener(Replay);
+        replayBtn3.onClick.AddListener(Replay);
         settingBtn.onClick.AddListener(() => Setting(true));
         settingBackBtn.onClick.AddListener(() => Setting(false));
         tipBackBtn.onClick.AddListener(() => Tip(false));
