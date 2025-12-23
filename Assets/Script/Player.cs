@@ -33,10 +33,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            UIController.Instance.SetFalse();
-        }
         if (isDead) return;
 
         CheckGround();
